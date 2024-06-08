@@ -41,7 +41,7 @@ class Relays(Resource):
         """ Create relay """
         data = api.payload
 
-        if not validators.domain(name):
+        if not validators.domain(data['name']):
             return { 'code': 400, 'message': f'Relayed domain {name} is not a valid domain'}, 400
 
         if common.fqdn_in_use(data['name']):
